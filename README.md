@@ -1,4 +1,6 @@
 # Planet Lia Planetization Docs
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8b191f30-555a-4e2e-b539-26a1aa3b181d/deploy-status)](https://app.netlify.com/sites/planetization-docs-planetlia/deploys)
+
 The official Planet Lia Planetization documentation website.
 
 The website if available on: [https://planetization.docs.planetlia.com](https://planetization.docs.planetlia.com).
