@@ -1,0 +1,155 @@
+baseURL = "https://docs.liagame.com/"
+languageCode = "en-us"
+title = "Planetization Docs"
+metadataformat = "yaml"
+canonifyurls = true
+enableEmoji = true
+theme = "hugo-material-docs"
+
+pygmentsStyle = "friendly"
+
+[params]
+	# General information
+	author = "planet-lia"
+	description = "Competitive coding game."
+	copyright = "Planet Lia"
+
+	# Repository
+	provider = "GitHub"
+	repo_url = "https://github.com/planet-lia/planetization-docs"
+
+	logo = "static/images/logo.png"
+	favicon = ""
+
+	permalink = "#"
+
+	# Custom assets
+	custom_css = []
+	custom_js  = []
+
+	# Syntax highlighting themes
+	highlight_css  = ""
+
+	[params.palette]
+	    # names can be found here: https://www.materialui.co/colors
+    	primary = "green"
+    	accent  = "light-green"
+
+    [params.font]
+    	text = "Ubuntu"
+    	code = "Ubuntu Mono"
+
+[social]
+#	twitter = "liagame"
+	github  = "liagame"
+	facebook = "liagame"
+	email   = "info@planetlia.com"
+
+[[menu.main]]
+	name   = "Docs"
+	url    = "/"
+	weight = 2
+
+[[menu.main]]
+	parent = "Docs"
+	name   = "Lia"
+	url    = "/"
+	weight = 1
+	pre = "<img src='/static/images/home.svg' alt='home' style='width:1.1em;vertical-align: middle;'>"
+
+# [[menu.main]]
+# 	parent = "Docs"
+# 	name   = "Game description"
+# 	url    = "game-description/"
+# 	weight = 2
+
+[[menu.main]]
+	parent = "Docs"
+	name   = "Getting started"
+	url    = "getting-started/"
+	weight = 2
+
+
+[[menu.main]]
+	parent = "Docs"
+	name   = "Game rules"
+	url    = "game-rules/"
+	weight = 3
+
+[[menu.main]]
+	parent = "Docs"
+	name   = "Strategy ideas"
+	url    = "strategy-ideas/"
+	weight = 4
+
+[[menu.main]]
+	parent = "Docs"
+	name   = "API"
+	url    = "api/"
+	weight = 7
+
+[[menu.main]]
+	parent = "Docs"
+	name   = "Lia CLI"
+	url    = "lia-cli/"
+	weight = 8
+
+[[menu.main]]
+	parent = "Docs"
+	name   = "Privacy policy"
+	url    = "privacy-policy/"
+	weight = 11
+
+[[menu.examples]]
+	parent = "Examples"
+	name   = "Overview"
+	url    = "examples/overview/"
+	weight = 1
+
+[[menu.examples]]
+	parent = "Examples"
+	name   = "Aiming at the opponent"
+	url    = "examples/aiming-at-the-opponent/"
+	weight = 2
+
+[[menu.examples]]
+	parent = "Examples"
+	name   = "Smartly spawn your units"
+	url    = "examples/smartly-spawn-your-units/"
+	weight = 3
+
+[[menu.examples]]
+	parent = "Examples"
+	name   = "Basic unit communication"
+	url    = "examples/basic-unit-communication/"
+	weight = 4
+
+[[menu.examples]]
+	parent = "Examples"
+	name   = "Retreat"
+	url    = "examples/retreat/"
+	weight = 5
+
+[[menu.examples]]
+	parent = "Examples"
+	name   = "Prepare your bot on start"
+	url    = "examples/prepare-your-bot-on-start/"
+	weight = 6
+
+[[menu.examples]]
+	parent = "Examples"
+	name   = "Extra: Using an IDE"
+	url    = "examples/using-ide/"
+	weight = 8
+
+[[menu.examples]]
+	parent = "Examples"
+	name   = "Extra: Debugging your code"
+	url    = "examples/debugging-your-code/"
+	weight = 9
+
+[blackfriday]
+	smartypants	= true
+	fractions = true
+	smartDashes = true
+	plainIDAnchors = true

@@ -1,0 +1,4 @@
+# Used by Netlify to redirect alias domains to the primary domain
+
+https://planetization.docs.planetlia.com/* https://planetization.docs.planetlia.com/:splat 301!
+https://planetization-docs-planetlia.com.netlify.com/* https://planetization.docs.planetlia.com/:splat 301!
