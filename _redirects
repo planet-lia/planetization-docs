@@ -1,4 +1,7 @@
-# Used by Netlify to redirect alias domains to the primary domain
+# These rules will change if you change your site’s custom domains or HTTPS settings
 
+# Redirect domain aliases to primary domain
 https://www.planetization.docs.planetlia.com/* https://planetization.docs.planetlia.com/:splat 301!
+
+# Optional: Redirect default Netlify subdomain to primary domain
 https://planetization-docs-planetlia.netlify.com/* https://planetization.docs.planetlia.com/:splat 301!
