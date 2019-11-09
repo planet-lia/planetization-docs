@@ -1,4 +1,4 @@
-baseURL = "https://docs.liagame.com/"
+baseURL = "https://planetization.docs.planetlia.com/"
 languageCode = "en-us"
 title = "Planetization Docs"
 metadataformat = "yaml"
