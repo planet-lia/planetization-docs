@@ -86,7 +86,7 @@ It will let you to pause the match generation, step through it, view details of 
 
 <br/><div style="text-align:center"><img src="/static/docs/images/debug-viewer.png" alt="Debug viewer" width="80%"/></div>
 
-## 5. Generate many games at once
+## 5. Generate many matches at once
 
 You can generate multiple matches using `-n` flag with `play` command as shown below. 
 By providing a number after `-n` flag you can specify how many matches you want to generate.
