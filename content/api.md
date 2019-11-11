@@ -18,7 +18,7 @@ On this page you can find references for:
 
 Bot receives InitialData object only once at the beginning of the match. It holds the following data:
 
-- *... same values as in [MatchState](#matchstate) except for the `time` field ...*
+- *... same values as in [MatchState](#matchstate) except for the `time` value which is `0` in InitialData...*
 - **`mapWidth`**`: int` - *In world units*
 - **`mapHeight`**`: int` - *In world units*
 - **`unitSize`**`: float` - *In world units*
@@ -29,15 +29,14 @@ Bot receives InitialData object only once at the beginning of the match. It hold
 - **`unitCost`**`: int` - *How much resources a new unit costs*
 - **`resourceGenerationSpeed`**`: float` - *resources / second*
 - **`maxActiveWorkersPerPlanet`**`: int` - *How many workers can be simultaneously mining resources on the same planet*
-- **`maxNumberOfUnitsPerTeam`**`: int`
+- **`maxNumberOfUnitsPerTeam`**`: int` - *If reached your bot won't be able to spawn new units*
 - **`maxMatchDuration`**`: float`
 - **`workerHealth`**`: float`
 - **`workerAttack`**`: float`
 - **`warriorHealth`**`: float`
 - **`warriorAttack`**`: float`
 - **`damageReductionRatioOnDefence`**`: float` - *How much the attack of a unit is reduced when it is attacking opponent units at opponent planet*
-- **`opponentWarriors`**`: list` - *List of opponent warriors, same as `yourWorkers`*
-- **`__matchDetails`**`: MatchDetails` - *Few details about the match and participating bots*
+- **`__matchDetails`**`: MatchDetails` - *A few details about the match and participating bots*
     - **`yourBotIndex`**`: int` - *Index of the bot in botsDetails to which this instance of MatchDetails was sent to*
     - **`botsDetails`**`: list` - *List of all bots that participate in this match with their details*
         - **`botName`**`: string`
@@ -59,8 +58,8 @@ It holds the data about what is going on with match entities at a current time d
     - **`resources`**`: float` - *How many resources are currently mined on the planet*
     - **`canSpawnNewUnit`**`: boolean` - *If there are enough resources on the planet to spawn a new unit*
     - **`idsOfUnitsOnPlanet`**`: list of int` - *List of ids of the units that are currently on the planet*
-- **`freePlanets`**`: list` - *List of planets that are still free, same as `yourPlanets`*
-- **`opponentPlanets`**`: list` - *List of planets that are owned by the opponent, same as `yourPlanets`*
+- **`freePlanets`**`: list` - *List of planets that are still free, same object types as `yourPlanets`*
+- **`opponentPlanets`**`: list` - *List of planets that are owned by the opponent, same object types as `yourPlanets`*
 - **`yourWorkers`**`: list` - *List of your workers*
     - **`id`**`: float` - *Id of the unit*
     - **`type`**`: UnitType` - *Enum - can be `WORKER`, `WARRIOR`*
@@ -70,8 +69,10 @@ It holds the data about what is going on with match entities at a current time d
     - **`health`**`: float`
     - **`currentPlanetId`**`: int` - *Id of the current planet, if the unit is not on a planet the it is `-1`*
     - **`destinationPlanetId`**`: int` - *Id of the destination planet, if the unit is not traveling then it is `-1`*
-- **`opponentWorkers`**`: list` - *List of opponent workers, same as `yourWorkers`*
-- **`yourWarriors`**`: list` - *List of your warriors, same as `yourWorkers`*
+- **`opponentWorkers`**`: list` - *List of opponent workers, same object types as `yourWorkers`*
+- **`yourWarriors`**`: list` - *List of your warriors, same object types as `yourWorkers`*
+- **`opponentWarriors`**`: list` - *List of opponent warriors, same object types as `yourWorkers`*
+
 ---
 
 ## Response object
@@ -79,7 +80,7 @@ It holds the data about what is going on with match entities at a current time d
 Using Response object you can communicate with the match generator and tell it what you want your units to do. You can use the following methods:
 
 * **```spawnUnit(int planetId, UnitType type)```**
-    * *Tells match generator to spawn new unit with on planet with index `planetId` and of type `type` that can be `WORKER` or `WARRIOR`*
+    * *Tells match generator to spawn new unit on a planet with id `planetId` and of type `type` that can be `WORKER` or `WARRIOR`*
 * **```sendUnit(int unitId, int destinationPlanetId)```**
     * *Tells match generator to send a unit with `unitId` to the planet with id `destinationPlanetId`. 
     Note that you can only send away units that are not already traveling somewhere.*

@@ -11,18 +11,17 @@ Let's setup your Planet Lia environment for Planetization game.
     * <a href="https://files.production.cloud.planetlia.com/games/planetization/1.0/windows/planet-lia.zip" target="_blank">Windows <i class="fas fa-download"></i></a>
     * <a href="https://files.production.cloud.planetlia.com/games/planetization/1.0/linux/planet-lia.zip">Linux <i class="fas fa-download"></i></a>
     * <a href="https://files.production.cloud.planetlia.com/games/planetization/1.0/macos/planet-lia.zip" target="_blank">macOS <i class="fas fa-download"></i></a>
-* <a href="https://java.com/en/" target="_blank">Install Java</a> on your system as Planetization game is written in Java and it needs it in order to run.
-Most of you probably already have it installed.
+* <a href="https://java.com/en/" target="_blank">Install Java</a> on your system. Planetization game is written in Java and it needs it in order to run. On most system it is already installed.
 * <a href="/setup-programming-language/" target="_blank">Setup programming language</a> that you will use for writing your bot. 
 If you have used the language before, you most likely already have everything that you need.
 
 ## 2. Play a game
 
 Open up a **Cmd.exe** or **PowerShell.exe** on Windows or a **Terminal** on Linux or macOS, **move to the unzipped Planet Lia CLI** directory and run the commands below. 
-First we will download a Planetization game and set it so that it can be used.
+First we will download a Planetization game and set it as our default game.
 Then we will create a new starting bot `john` using programming language Java and will battle it against itself. 
 To choose a different language for your bot simply replace the ```java``` part of the first command with ```python3``` or ```kotlin```.
-The first time you play a game with your bot it may take some time as a couple of libraries need to be downloaded, later runs will be much faster.
+The first time you play a match with your bot it may take some time as a couple of libraries need to be downloaded, later runs will be much faster.
 
 {{< multilang >}}
 
@@ -61,8 +60,8 @@ lia.exe play john john
 
 <!-- ##### *Commands:* [*bot*](/lia-cli/#bot), [*play*](/lia-cli/#play) -->
 
-After running the commands above, wait until the match is generated and voila, a browser window is opened displaying replay of a generated match! 
-Also a new directory named `john` is created inside the unzipped Planet Lia CLI directory. 
+After running the commands above, wait until the match is generated and voila, a browser window is opened displaying a replay of the generated match! 
+Also a new directory named `john` is created in your current working directory. 
 This directory contains all the code for your bot. We will dig into it in the next section.
 
 <br/><div style="text-align:center"><img src="/static/docs/images/game-example.png" alt="Example gameplay" width="80%"/></div>
@@ -88,7 +87,7 @@ This means that you can create additional files which you then import into `MyBo
 
 A more detail guide on how to debug your bot using a step debugger integrated into your favourite IDE, is available [here](/examples/debugging-your-code).
 
-Now we will only note that if you use `-d` flag with `play` command (eg. `lia.exe play -d john john`), you can **get a very useful debug view** while the match is generating as shown below. 
+Now we will only note that if you use `-d` flag with `play` command (eg. `lia.exe play -d john john`), you can **get a very useful debug view** while the match is generating, as shown below. 
 It will let you to pause the match generation, step through it, view details of game entities, API calls and more. 
 
 <br/><div style="text-align:center"><img src="/static/docs/images/debug-viewer.png" alt="Debug viewer" width="80%"/></div>

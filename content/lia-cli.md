@@ -7,7 +7,7 @@ Planet Lia CLI is a <a href="https://en.wikipedia.org/wiki/Command-line_interfac
 It can setup your bots, generate matches, help you with debugging and much more.
 To set it up check our [Getting started](/getting-started) guide.
 
-To see what Planet Lia CLI can do, open up a **Cmd.exe** or **PowerShell.exe** on Windows or a **Terminal** on Linux or macOS, **move to the unzipped Lia-SDK** and run the command below:
+To see what Planet Lia CLI can do, open up a **Cmd.exe** or **PowerShell.exe** on Windows or a **Terminal** on Linux or macOS, **move to the unzipped Planet Lia directory** and run the command below:
 
 {{< multilang >}}
 

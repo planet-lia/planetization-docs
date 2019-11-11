@@ -20,13 +20,13 @@ In short, build more units and conquer more planets than your opponent!
 
 ## Power bar
 Power bar represents a current balance of strength and shows ratio of the number of units each bot owns.
-Power ratio of both bots is displayed during the game as a green and red bar below the game UI.
+Power ratio of both bots is displayed during the mats as a green and red bar below the game UI.
 
 <br/><div style="text-align:center"><img src="/static/docs/images/power-bar.png" alt="Power bar" width="70%"/></div>
 
 ## Map 
 Map contains 22 planets that units can conquer. 
-Units can move from one planet to the other (destination can't change once the unit is on its way!). 
+Units can move from one planet to the other (your bot can't change a destination of a unit while it is on its way!). 
 If the unit can't go straight from one planet to another due to other planets being in between, it follows the path based on the graph shown in the image below.
 Once it reaches a node in the graph (white circle) from where there is nothing in between itself and the planet it is traveling to, it goes directly to it.
 In the image you can also see the ids of all the planets that are used in the game.
@@ -40,9 +40,10 @@ In the image you can also see the ids of all the planets that are used in the ga
 ## Planets
 Each planet can host unlimited number of units.
 Maximum of `5` worker units can mine resources simultaneously on a single planet.
-When planet has `5` resources you can spawn a new unit on it where you can choose whether the unit will be a worker or a warrior.
+When planet has `5` resources you can spawn a new unit on it where you can choose whether the unit will be worker or warrior.
 If a unit arrives to a planet owned by the opponent it battles the opponent units that are on it.
 When a unit attacks opponents planet it only does `80%` of normal damage to opponent units on that planet.
+Let's call that a home court advantage of the units that own the planet.
 
 * Maximum number of workers mining simultaneously: 5
 * Attacker damage reduced to: 80%
@@ -65,7 +66,7 @@ Worker units can mine resources but are bad at combat due to low health and atta
  <div style="text-align:center"><img src="/static/docs/images/workers.png" alt="Workers" width="25%"/></div>
 
 ## Warrior units
-Warrior units can't mine resources but they are strong at attack and defence.
+Warrior units can't mine resources but they are strong at attack and defence and are thus great for combat.
 
 * Health: 100 HP
 * Attack: 100 HP damage
@@ -81,10 +82,11 @@ Warrior units can't mine resources but they are strong at attack and defence.
 Units can battle opponent units in two ways.
 
 - **If two opponent units meet in space** they deal each other the damage in a size of their attack. 
-Note that warrior units have 2x attack and defence than worker units and are thus much better for fighting. 
-- **If a unit lands on a planet owned by opponent units** it battles one opponent unit at a time by dealing it damage in
-the size of it's `attack * 0.8` (opponent units have home planet advantage) and receiving damage in size of opponent unit's attack. 
-If it kills the opponent unit it starts battling another one until it dies or no opponent units are left on the planet, in which case it takes it over. 
+Note that warrior units have 2x attack and defence of worker units and are thus much better for fighting. 
+- **If a unit lands on a planet owned by opponent units** it battles one opponent unit on that planet at a time by dealing it damage in
+the size of it's `attack * 0.8` (opponent units have home court advantage) and receiving damage in size of opponent unit's `attack`. 
+If it kills the opponent unit it starts battling another unit on a planet until it dies or no opponent units are left on the planet, in which case it takes it over. 
+Unit first battles warrior opponent units on that planet and when there are no warrior units it starts battling worker units.
 
 ## Bot restrictions
 
