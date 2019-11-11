@@ -5,6 +5,8 @@ The official Planet Lia Planetization documentation website.
 
 The website is available on: [https://planetization.docs.planetlia.com](https://planetization.docs.planetlia.com).
 
+To view the source code of the Planet Lia CLI or game, head on to our monorepo [planet-lia/planet-lia](https://github.com/planet-lia/planet-lia).
+
 ## Development
 The website is created using [Hugo](https://gohugo.io) and the 
 [Material Docs theme](https://github.com/digitalcraftsman/hugo-material-docs).
