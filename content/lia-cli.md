@@ -3,7 +3,7 @@ date: 2018-08-05T04:32:25+02:00
 title: Planet Lia CLI
 ---
 
-Planet Lia CLI is a <a href="https://en.wikipedia.org/wiki/Command-line_interface" target="_blank">command line interface</a> that helps you play Planet Lia games as effortlessly as possible.
+Planet Lia CLI is a <a href="https://en.wikipedia.org/wiki/Command-line_interface" target="_blank">command line interface</a> tool that helps you play Planet Lia games as effortlessly as possible.
 It can setup your bots, generate matches, help you with debugging and much more.
 To set it up check our [Getting started](/getting-started) guide.
 

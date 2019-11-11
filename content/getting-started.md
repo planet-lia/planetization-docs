@@ -18,9 +18,9 @@ If you have used the language before, you most likely already have everything th
 ## 2. Play a game
 
 Open up a **Cmd.exe** or **PowerShell.exe** on Windows or a **Terminal** on Linux or macOS, **move to the unzipped Planet Lia CLI** directory and run the commands below. 
-First we will download a Planetization game and set it as our default game.
-Then we will create a new starting bot `john` using programming language Java and will battle it against itself. 
-To choose a different language for your bot simply replace the ```java``` part of the first command with ```python3``` or ```kotlin```.
+First we will download the Planetization game and set it as our default game.
+Then we will create a new starting bot `john` written in Java and battle it against itself. 
+To choose a different language for your bot simply replace the `java` part of the first command with `python3` or `kotlin`.
 The first time you play a match with your bot it may take some time as a couple of libraries need to be downloaded, later runs will be much faster.
 
 {{< multilang >}}
@@ -60,7 +60,7 @@ lia.exe play john john
 
 <!-- ##### *Commands:* [*bot*](/lia-cli/#bot), [*play*](/lia-cli/#play) -->
 
-After running the commands above, wait until the match is generated and voila, a browser window is opened displaying a replay of the generated match! 
+After running the commands above, wait until the match is generated and voila, a browser window is opened displaying the replay of the generated match! 
 Also a new directory named `john` is created in your current working directory. 
 This directory contains all the code for your bot. We will dig into it in the next section.
 
@@ -87,7 +87,7 @@ This means that you can create additional files which you then import into `MyBo
 
 A more detail guide on how to debug your bot using a step debugger integrated into your favourite IDE, is available [here](/examples/debugging-your-code).
 
-Now we will only note that if you use `-d` flag with `play` command (eg. `lia.exe play -d john john`), you can **get a very useful debug view** while the match is generating, as shown below. 
+Note if you use the `-d` flag with `play` command (eg. `lia.exe play -d john john`), you can **get a very useful debug view** while the match is generating, as shown below. 
 It will let you to pause the match generation, step through it, view details of game entities, API calls and more. 
 
 <br/><div style="text-align:center"><img src="/static/docs/images/debug-viewer.png" alt="Debug viewer" width="80%"/></div>
