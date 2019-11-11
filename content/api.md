@@ -35,7 +35,7 @@ Bot receives InitialData object only once at the beginning of the match. It hold
 - **`workerAttack`**`: float`
 - **`warriorHealth`**`: float`
 - **`warriorAttack`**`: float`
-- **`damageReductionRatioOnDefence`**`: float` - *How much the attack of a unit is reduced when it is attacking opponent units at opponent planet*
+- **`damageReductionRatioOnDefence`**`: float` - *How much the attack of a unit is reduced when it is attacking opponent units on opponent's planet*
 - **`__matchDetails`**`: MatchDetails` - *A few details about the match and participating bots*
     - **`yourBotIndex`**`: int` - *Index of the bot in botsDetails to which this instance of MatchDetails was sent to*
     - **`botsDetails`**`: list` - *List of all bots that participate in this match with their details*
@@ -67,8 +67,8 @@ It holds the data about what is going on with match entities at a current time d
     - **`y`**`: float` - *y location of the unit*
     - **`rotation`**`: float` - *In degrees*
     - **`health`**`: float`
-    - **`currentPlanetId`**`: int` - *Id of the current planet, if the unit is not on a planet the it is `-1`*
-    - **`destinationPlanetId`**`: int` - *Id of the destination planet, if the unit is not traveling then it is `-1`*
+    - **`currentPlanetId`**`: int` - *Id of the current planet, if the unit is not on a planet the Id is `-1`*
+    - **`destinationPlanetId`**`: int` - *Id of the destination planet, if the unit is not traveling the Id is `-1`*
 - **`opponentWorkers`**`: list` - *List of opponent workers, same object types as `yourWorkers`*
 - **`yourWarriors`**`: list` - *List of your warriors, same object types as `yourWorkers`*
 - **`opponentWarriors`**`: list` - *List of opponent warriors, same object types as `yourWorkers`*

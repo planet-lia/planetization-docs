@@ -13,12 +13,16 @@ Sometimes though, yo want to connect your bot manually to match generator and st
 ### Generating game in debug mode
 
 Fortunately `play` and `generate` commands have a flag with which you say which bots you will run manually. 
-It is also useful to include `-d` flag that will also display a debug view of the match.
+It is also useful to include the `-d` flag that will display the debug view of the match.
 The command below will generate a match between bots `jon` and `bob`. Planet Lia CLI will take care of running `bob`, while `john` will have to be run manually.
 
 ```bash
-./lia play -d -m 0 john bob # -m stands for manual mode and 0 defines that a bot at 0 index (in this case john) will be run manually.
-# If you would type -m 1 then bob would have to be run manually and if you would set -m 0,1 then both bots would have to be run manually
+# Flag -m stands for manual mode and 0 defines that a bot at 0 index 
+# (in this case john) will be run manually.
+#
+# If you would type -m 1 then bob would have to be run manually and 
+# if you would set -m 0,1 then both bots would have to be run manually
+./lia play -d -m 0 john bob 
 ```
 
 After you press ENTER, you should see something like this: 
