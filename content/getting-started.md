@@ -66,22 +66,16 @@ This directory contains all the code for your bot. We will dig into it in the ne
 
 <br/><div style="text-align:center"><img src="/static/docs/images/game-example.png" alt="Example gameplay" width="80%"/></div>
 
-**Pro tip**: To speed up match generation, use `--skip-build` flag with `play` command. 
-This will avoid building both bots before a match and it can be used when you will want to generate many matches one after another.
-
 ## 3. Understand your bot
 
 With your favorite text editor open up your bot's main file. If you have created `Java` bot then open up `john/src/MyBot.java`, if `Python3` then `john/my_bot.py` and if `Kotlin` then `john/src/MyBot.kt`. 
 You can also open the whole bot directory (eg. `john`) in an IDE. Check <a href="/examples/using-ide/">Using an IDE</a> example to learn more.
 
-Starting bot implementation is very simple. Its now your goal to improve it.
-
 **Read through the code to see how it works! If you need help, check out our <a href="/api">API</a>.**
 
 Note that during the development you can structure your bot directory as you like, as long as the `MyBot` file acts as your "main" file.
 This means that you can create additional files which you then import into `MyBot`.
-
- To delete a bot, simply delete it's directory, in our case the directory named `john`.
+To delete a bot, simply delete it's directory, in our case the directory named `john`.
 
 ## 4. Debug your bot
 
@@ -91,6 +85,38 @@ Note if you use the `-d` flag with `play` command (eg. `lia.exe play -d john joh
 It will let you to pause the match generation, step through it, view details of game entities, API calls and more. 
 
 <br/><div style="text-align:center"><img src="/static/docs/images/debug-viewer.png" alt="Debug viewer" width="80%"/></div>
+
+## 5. Generate many games at once
+
+You can generate multiple matches using `-n` flag with `play` command as shown below. 
+By providing a number after `-n` flag you can specify how many matches you want to generate.
+This is really useful for comparing quality of two bots as the end result also prints out the number of times each bot has won.
+
+{{< multilang >}}
+
+<div class="tab">
+    <button class="tablinks tc2 active" onclick="changeLanguage(event, 'Cmd2', 'tc2', 'cc2')">Windows cmd</button>
+    <button class="tablinks tc2" onclick="changeLanguage(event, 'PowerShell2', 'tc2', 'cc2')">Windows PowerShell</button>
+    <button class="tablinks tc2" onclick="changeLanguage(event, 'Terminal2', 'tc2', 'cc2')">Linux/macOS</button>
+</div>
+
+<div id="Cmd2" class="tabcontent cc2" style="display: block;">
+{{< highlight cmd >}}
+lia.exe play -n 20 john john
+{{< /highlight >}}
+</div>
+
+<div id="PowerShell2" class="tabcontent cc2">
+{{< highlight powershell >}}
+.\lia.exe play -n 20 john john
+{{< /highlight >}}
+</div>
+
+<div id="Terminal2" class="tabcontent cc2">
+{{< highlight bash >}}
+./lia play -n 20 john john
+{{< /highlight >}}
+</div>
 
 
 ## Next up
