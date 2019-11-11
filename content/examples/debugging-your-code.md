@@ -5,39 +5,38 @@ example: true
 ---
 
 
-Lia-SDK can, besides quickly and effortlessly generating games, also help you with debugging your code. Usually when you run the [```play```](/lia-cli/#play) command through terminal or GitBash, Lia CLI automatically runs the game engine and two bots that you have specified in command. This is great because you can see the resulting game within seconds, but sometimes you want to do it more manually and stop the game in between to run the debugger and see what is going on with your bot.
+Planet Lia SDK can help you with debugging your code. 
+Usually when you run the [```play```](/lia-cli/#play) command through terminal, Cmd or PowerShell, Planet Lia CLI automatically runs the match generator and two bots that you have specified in the command.
+This is great because you can see the resulting match within seconds.
+Sometimes though, yo want to connect your bot manually to match generator and stop the match in between, step through your code with a debugger and check what is going on.
 
 ### Generating game in debug mode
 
-Fortunatelly the ```play``` command has a flag with which you say which bots you will run manually. The command below will generate a game between bots Jon and Bob. Lia CLI will take care of running Bob, while John will have to be run manually.
+Fortunately `play` and `generate` commands have a flag with which you say which bots you will run manually. 
+It is also useful to include `-d` flag that will also display a debug view of the match.
+The command below will generate a match between bots `jon` and `bob`. Planet Lia CLI will take care of running `bob`, while `john` will have to be run manually.
 
 ```bash
-./lia play John Bob -d 1 # -d stands for debug mode and 1 defines that first bot (in this case John) will be run manually.
-# If you would type -d 2 then Bob would have to be run manually and if you would set -d 1,2 then both bots would have  to 
-# be run manually
+./lia play -d -m 0 john bob # -m stands for manual mode and 0 defines that a bot at 0 index (in this case john) will be run manually.
+# If you would type -m 1 then bob would have to be run manually and if you would set -m 0,1 then both bots would have to be run manually
 ```
 
-After you press ENTER, you should see the following output: 
+After you press ENTER, you should see something like that: 
 ```text
 ...
-Running game generator
-Server started on port 8887.
-Running bot Bob
-AI service for player 2 has connected.
+Running match generator.
+Bot server started on port 8887
+Waiting for bots to connect
+Running bot bob
+Bot 'bob' has connected
 ```
 
 Game server will then wait until you manually connect your bot.
 
 ### Manually connecting your bot
 
-Connecting the bot manually is very simple, you just need to type these three commands:
-```bash
-./lia compile John # Compiles your bot (run it also if you are using interpreted languages like Python)
-cd John # You need to be in the same directory as the run.sh script
-bash run.sh 8887 # 8887 is default game engine port
-```
-
-But this does not give us a lot of value as we want to be able to debug the code with a propper debuger. Let's see how this can be done with IntelliJ IDEA (We are by no means affiliated with JetBrains, the creators of IntelliJ IDEA, this IDE is used here just to showcase the point).
+Now you can manually run your bot using your IDE.
+Let's see how this can be done with IntelliJ IDEA (We are by no means affiliated with JetBrains, the creators of IntelliJ IDEA, this IDE is used here just to showcase the point).
 
 ### Connecting your bot with IntelliJ IDEA
 
@@ -45,7 +44,7 @@ Make sure you have [IntelliJ IDEA](https://www.jetbrains.com/idea/) installed. Y
 
 1. Launch IDEA and click Open on the welcome screen. <br/> &nbsp;
     <div style="text-align:center"><img src="/static/examples/images/intellij-open.png" alt="Open IntelliJ IDEA" width="30%" vspace="20"/></div>
-2. Locate your bot (eg. John), mark it and then choose OK. <br/> &nbsp;
+2. Locate your bot (eg. `john`), mark it and then choose OK. <br/> &nbsp;
     <div style="text-align:center"><img src="/static/examples/images/intellij-path-to-john.png" alt="Path to John" width="30%"/></div>
 3. On the next screen tick *Use auto-import* checkbox and click OK. 
 4. Editor will open up and you will see Gradle installing dependencies. Wait until it is finished.

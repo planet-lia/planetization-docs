@@ -3,7 +3,7 @@
 
 The official Planet Lia Planetization documentation website.
 
-The website if available on: [https://planetization.docs.planetlia.com](https://planetization.docs.planetlia.com).
+The website is available on: [https://planetization.docs.planetlia.com](https://planetization.docs.planetlia.com).
 
 ## Development
 The website is created using [Hugo](https://gohugo.io) and the 

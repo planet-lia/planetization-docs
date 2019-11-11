@@ -4,202 +4,101 @@ title: Game Rules
 ---
 
 ## Gameplay
-Your goal is to write a bot that controls a group of units and eliminates the opponent. The game starts with each side having 3 worker and 3 warrior units. With resources you can spawn new worker or warrior units. Workers can collect resources that lay on the map, but note that resources stop spawning after 140 seconds. Worker units can't shoot but can move backwards while warrior units can shoot but can only move forward. Game ends when one team is eliminated or when the game time exceeds 200 seconds. If after 200 seconds no team was eliminated, then the team with the most power wins. If both bots powers are the same then the winner is chosen randomly. Be careful as team-kill is enabled!
 
-* Game duration: 200 s
+Your goal is to write a bot that controls a fleet of ships (units), conquer planets and battle with the opponent. 
+The game starts with each side having `5` worker units and owning one planet.
+With workers that are on a planet you can mine resources which you can use to build new units.
+You can send your units to other planets to conquer them.
+If a unit collides with an opponent unit or arrives at a planet owned by opponent units it engages in battle. 
+The winner is a bot that manages to destroy all opponent units or that have more units than his opponent after `200 s` mark.
+
+In short, build more units and conquer more planets than your opponent!
+
+* Game duration: 200 s or when a team is eliminated
 
 <br/><div style="text-align:center"><img src="/static/docs/gifs/example-gameplay.gif" alt="Example gameplay" width="60%"/></div>
 
-## Bot power 
-Bot power represents a current strength of one bot. It is calculated as a sum of number of collected but not yet used resources, number of alive warriors times price of a single warrior and number of alive workers times price of a single worker. Power ratio of both bots is displayed during the game as a yellow and green bar below the game UI.
+## Power bar
+Power bar represents a current balance of strength and shows ratio of the number of units each bot owns.
+Power ratio of both bots is displayed during the game as a green and red bar below the game UI.
 
-<br/>
-<div style="text-align:center"><img src="/static/docs/images/power-bar.png" alt="Power bar" width="70%"/></div>
+<br/><div style="text-align:center"><img src="/static/docs/images/power-bar.png" alt="Power bar" width="70%"/></div>
 
 ## Map 
-Map is automatically generated and is always symmetrical across the diagonal. This provides an equal starting point for both teams.
+Map contains 22 planets that units can conquer. 
+Units can move from one planet to the other (destination can't change once the unit is on its way!). 
+If the unit can't go straight from one planet to another due to other planets being in between, it follows the path based on the graph shown in the image below.
+Once it reaches a node in the graph (white circle) from where there is nothing in between itself and the planet it is traveling to, it goes directly to it.
+In the image you can also see the ids of all the planets that are used in the game.
 
-* Width: 176 map units
-* Height: 99 map units
+* Width: 96 map units
+* Height: 54 map units
+* Number of planets: 22
+
+<br/><div style="text-align:center"><img src="/static/docs/images/map.png" alt="Map" width="50%"/></div>
+
+## Planets
+Each planet can host unlimited number of units.
+Maximum of `5` worker units can mine resources simultaneously on a single planet.
+When planet has `5` resources you can spawn a new unit on it where you can choose whether the unit will be a worker or a warrior.
+If a unit arrives to a planet owned by the opponent it battles the opponent units that are on it.
+When a unit attacks opponents planet it only does `80%` of normal damage to opponent units on that planet.
+
+* Maximum number of workers mining simultaneously: 5
+* Attacker damage reduced to: 80%
+* Cost of a new unit: 5
+* Size: 4 map units
+
+ <div style="text-align:center"><img src="/static/docs/images/planets.png" alt="Planets" width="25%"/></div>
 
 ## Worker units
-Each worker unit has 100 health. 
-After it has been hit by a bullet it takes 8s for it to start regenerating its health with a speed of 8 health points per second. 
-The location (x, y) of the unit points to it's center (the same goes for warrior units).
-Worker units can't shoot but can move backwards and forwards.
+Worker units can mine resources but are bad at combat due to low health and attack.
 
-* Size: 2 map units
-* Price: 3 resources
-* Health: 100 HP
-* Regeneration speed (after 8s out of combat): 8 HP/s
-* Damage received by a bullet: 30 HP
-* Can move backwards
-* Can't shot
+* Resource generation speed: 1 resource / second
+* Health: 50 HP
+* Attack: 50 HP damage
+* Size: 1.5 map units
+* Price: 5 resources
+* Speed: 6 map units / second
+* Rotation speed: 60 degrees / second
 
  <div style="text-align:center"><img src="/static/docs/images/workers.png" alt="Workers" width="25%"/></div>
 
 ## Warrior units
-Warrior units can't move backwards, but take less damage then worker units and can shoot bullets.
-They can have the maximum of three bullets loaded at once and can shoot them with a delay of 0.2s while the reloading of a single bullet takes 1s.
-The warrior units are also a bit more expensive than the workers. 
+Warrior units can't mine resources but they are strong at attack and defence.
 
-* Price: 4 resources
 * Health: 100 HP
-* Regeneration speed (after 8s out of combat): 8 HP/s
-* Bullets in magazine: 3
-* Delay between shots: 0.2s
-* Damage received by a bullet: 22 HP
-* Reload time: 1s
-* Can't move backwards
+* Attack: 100 HP damage
+* Size: 1.5 map units
+* Price: 5 resources
+* Speed: 6 map units / second
+* Rotation speed: 60 degrees / second
 
  <div style="text-align:center"><img src="/static/docs/images/warriors.png" alt="Warriors" width="25%"/></div>
 
-## Resources
-Game starts with 20 resources placed symmetrically on the map. 
-When a resource is picked up by a worker unit, new one is spawned randomly on the map, but not too close to both spawn locations.
-After 140s new resources are not spawned anymore and the game enters its final stage.
+## Battle 
 
-* Game stops spawning new resources after 140s
-* Before the 140s mark there are always 20 resources on the map at all times
+Units can battle opponent units in two ways.
 
- <div style="text-align:center"><img src="/static/docs/images/resource.png" alt="Resource" width="15%"/></div>
-
-## Bullets
-Each bullet has a velocity of 32 map units per second and it has a range of 42 map units. 
-A bullet deals a damage to an opponent as well as to an ally unit.
-
-* Speed: 32 map units/s
-* Range: 42 map units
-* Team-kill: on
-
-## Viewing area
-
-Each unit has a viewing area in a shape of a triangle. 
-The area has a length of 28 map units and although it visually spans over the obstacles, the unit only sees what is in its sight. 
-Width of the furthest side of the triangle is 20 map units. 
-The viewing area is always in front of the unit and it moves with it.
-
-* Length: 28 map units
-* Width: 20 map units
-
- <div style="text-align:center"><img src="/static/docs/images/viewing-area.png" alt="Viewing area" width="40%"/></div>
+- **If two opponent units meet in space** they deal each other the damage in a size of their attack. 
+Note that warrior units have 2x attack and defence than worker units and are thus much better for fighting. 
+- **If a unit lands on a planet owned by opponent units** it battles one opponent unit at a time by dealing it damage in
+the size of it's `attack * 0.8` (opponent units have home planet advantage) and receiving damage in size of opponent unit's attack. 
+If it kills the opponent unit it starts battling another one until it dies or no opponent units are left on the planet, in which case it takes it over. 
 
 ## Bot restrictions
 
-When generating your games on Lia servers we need to limit your bot so that it does not use too much time or other resources. 
-Thus we place the following limitations on your bot:
+The following are the limitations on your bot while the match is generating. 
+Note that when running your bot locally in debug mode with `-d` flag, no restrictions are set.
+Head [here](/examples/debugging-your-code/) to see how to run your bot in debug mode.
 
-* When the first update is called it has **15 seconds to respond**
-* For all other updates it has **2.0 seconds to respond**
-* If the bot **fails to respond in time for 8 or more times** in one game it is disqualified and the game continues without it
-* If the bot does **not connect within 30 seconds** since the game engine started it is disqualified
-* If the sum of the time that bot took to respond to all requests combined is **greater than 300 seconds** it is disqualified
-* Your bot is limited to **1GB of RAM**
-
-When running your bot locally in debug mode, no restrictions are set (check [here](/examples/debugging-your-code/) to see how to run your bot in debug mode).
-
-## Speech bubbles 
-Your bot has an ability to make your units say something with the text appearing above them in the game. At once only one of your units can speak. If you are using speech bubbles, you need to follow the rules below or we may disable this feature for you or will be even forced to ban your account.
-
-* Don't use curse words
-* Don't use speech bubbles for promoting anything unrelated to Lia
-* Be polite and don't insult other players or others that may view your games
-* In general use them for game related interaction
-
- <div style="text-align:center"><img src="/static/docs/images/speech-bubble.png" alt="Speech bubble" width="20%"/></div>
-
-## Custom game rules
-
-If you want to run a custom game, whether you need to test something or you just want to play around, all you have to do is change the "game-config.json" file, located in the data directory in the extracted Lia-SDK (or "game-config-debug.json" if running in debug mode).
-
-Be aware that some properties may break the game if you change them too much, for example if you put 10,000 units to fight it will probably take ages before the game generates. :smile: Have fun!
-
-### Example of game-config.json
-
-```json
-{
-  "version": "1.0.0",
-  "simulation": {
-    "ticksPerSecond": 30,
-    "velocityIterationsPerTick": 6,
-    "positionIterationsPerTick": 4
-  },
-  "bots": {
-    "firstTickTimeout": 15.0,
-    "tickTimeout": 2.0,
-    "ticksPerRequest": 3,
-    "maxFailedResponses": 8,
-    "initialConnectionTimeout": 30.0,
-    "requestsSumTimeout": 300.0
-  },
-  "gameDetails": {
-    "mapWidth": 176,
-    "mapHeight": 99,
-    "gameDuration": 200,
-    "background": {
-      "r": 0.2,
-      "g": 0.2,
-      "b": 0.2,
-      "a": 1.0
-    },
-    "initialWorkersPerTeam": 3,
-    "initialWarriorsPerTeam": 3,
-    "maxNumberOfUnitsPerTeam": 30,
-    "teamKill": true,
-    "mapType": -1
-  },
-  "obstacles": {
-    "blockSize": 3.0,
-    "blockToCoolerRatio": 0.8
-  },
-  "units": {
-    "size": 2,
-    "health": 100,
-    "forwardVelocity": 7.2,
-    "backwardVelocity": 5.2,
-    "rotationVelocityDeg": 54,
-    "slowRotationVelocityDeg": 14,
-    "timeBetweenShoots": 0.2,
-    "nBulletsInMagazine": 3,
-    "reloadTime": 1,
-    "healthRecoveryTime": 1.0,
-    "healthRecoveryPoints": 8,
-    "recoveryStartsAfter": 8.0,
-    "speechBubbleDuration": 2.5,
-    "delayBetweenSpeechBubbles": 0.5,
-    "maxSpeechBubbleTextLength": 23,
-    "warriorPrice": 4,
-    "workerPrice": 3
-  },
-  "resources": {
-    "size": 1,
-    "amount": 20,
-    "offsetFromSpawn": 32,
-    "offsetFromUnits": 8,
-    "offsetFromWalls": 2,
-    "offsetFromObstacles": 0,
-    "stopSpawningAfter": 140
-  },
-  "viewingArea": {
-    "length": 28,
-    "width": 20,
-    "offset": -1
-  },
-  "bullets": {
-    "size": 0.4,
-    "velocity": 32,
-    "bulletRange": 42,
-    "damageToWarrior": 22,
-    "damageToWorker": 30
-  },
-  "healthBar": {
-    "width": 1.8,
-    "height": 0.16,
-    "offset": 1.4
-  }
-}
-```
+* When the first update is called it has **1 seconds to respond**
+* For all other updates it has **0.2 seconds to respond**
+* If the bot **fails to respond in time for 8 or more times** in one match it is disqualified and the match continues without it
+* If the bot does **not connect within 15 seconds** since the match-generator has started it is disqualified
+* If the sum of the time that bot took to respond to all requests combined is **greater than 45 seconds** it is disqualified
 
 ### Related:
 
-* [Getting started](/getting-started/) - Get started with Lia.
+* [Getting started](/getting-started/) - Get started with the game
+* [API reference](/api/) - Check out how bot can play the game
