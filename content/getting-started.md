@@ -52,10 +52,10 @@ lia.exe play john john
 
 <div id="Terminal" class="tabcontent cc1">
 {{< highlight bash >}}
-./lia.exe game download planetization
-./lia.exe game set planetization
-./lia.exe bot new java john
-./lia.exe play john john
+./lia game download planetization
+./lia game set planetization
+./lia bot new java john
+./lia play john john
 {{< /highlight >}}
 </div>
 
